@@ -1,0 +1,25 @@
+class Player
+{
+    //Пробуем сделать шаг и возвращаем булево значение
+    function void tryMove()
+    {
+        return;
+    }
+
+    //Если tryMove — true, делаем шаг
+    method void movePlayer() 
+    {
+		return;
+	}
+
+    //Получаем позицию игрока
+    method void getPosition() 
+    {
+		return;
+	}
+
+    // Освобождение памяти
+    method void dispose() {
+		do ?.dispose();
+		return;
+	}
