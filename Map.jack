@@ -1,10 +1,17 @@
 class Map {
-    
+    // Получаем char array из строки вроде  
     function void readMap() {
         return;
     }
-    
-    function void drawMap() {
+
+    // Выводим лабиринт на экран
+    method void drawMap() {
         return;
     }
+
+    // Освобождение памяти
+    method void dispose() {
+		do ?.dispose();
+		return;
+	}
 }
