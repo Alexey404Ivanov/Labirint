@@ -1,5 +1,47 @@
 class Main {
+    // Переменные
+    var Array map;
+    var Player player;
+
+    // Инициализация переменных
+    let map = Map.readMap();
+    let player = Player.new(...);
+
+    // Инициализация классов (?)
+    Player.init();
+    Map.init();
+
+    // Рисование лабиринта и игрока
+    do Map.draw();
+    do Player.draw();
+
 	function void main() {
-		return;
+    		while (~isGameEnd) {
+
+
+                ...
+
+
+        }
+
+        // Экран окончания игры (?)
+        ...
+
+        // Чистка памяти после завершения игры
+        map.dispose();
+        player.dispose();
+
+
+        return;
+    }
+
+    // Проверка игры на завершение
+    function bool isGameEnd() {
+        return ..;
+    }
+
+    // Завершает игру. Выводит сообщение и чистит экран.
+    function void endGame() {
+        return;
     }
 }
