@@ -1,0 +1,10 @@
+class Map {
+    
+    function void readMap() {
+        return;
+    }
+    
+    function void drawMap() {
+        return;
+    }
+}
