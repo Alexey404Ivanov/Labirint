@@ -5,7 +5,7 @@ class Main {
 
     // Инициализация переменных
     let map = Map.readMap();
-    let player = Player.new(...);
+    let player = Player.new();
 
     // Инициализация классов (?)
     Player.init();

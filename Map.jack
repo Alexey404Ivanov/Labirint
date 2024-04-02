@@ -1,4 +1,15 @@
 class Map {
+
+    field int width, height;
+
+    method int width() {
+        return width;
+    }
+    
+    method int height() {
+        return height;
+    }
+
     // Получаем char array из строки вроде  
     function void readMap() {
         return;

@@ -1,25 +1,102 @@
-class Player
-{
-    //Пробуем сделать шаг и возвращаем булево значение
-    function void tryMove()
-    {
-        return;
+class Player {
+    
+    field int x, y, deltaX, deltaY; 
+
+
+    constructor Player new() {
+
+        let x = 0;
+        let y = 0;
+        let deltaX = 0;
+        let deltaY = 0;
+
+        return this;
     }
 
-    //Если tryMove — true, делаем шаг
-    method void movePlayer() 
-    {
+    //Получаем позицию игрока
+    method void getPosition(Map map) {
+
+        var int i, j;
+
+        let i = 0;
+        let j = 0; 
+
+        while (i < map.height()) {
+            while (j < map.width()) {
+                if (map[i ,j] = 'P') {
+                    let x = j;
+                    let y = i;
+                    return;
+                }
+                let j = j + 1;
+            let i = i + 1;
+
 		return;
 	}
 
-    //Получаем позицию игрока
-    method void getPosition() 
-    {
-		return;
+        
+
+    //Получает команду и высчитывает изменение координат, исходя из неё
+    method void getCommand(int key) {
+
+        var int leftArrow, upArrow, rightArrow, downArrow;
+
+        let leftArrow = 130;
+        let upArrow = 131;
+        let rightArrow = 132;
+        let downArrow = 133;
+
+        if (key = leftArrow) {
+            let deltaX = -1;
+            let deltaY = 0;
+            return;
+        }
+
+        if (key = upArrow) {
+            let deltaX = 0;
+            let deltaY = -1;
+            return;
+        }
+
+        if (key = rightArrow) {
+            let deltaX = 1;
+            let deltaY = 0;
+            return;
+        }
+
+        if (key = downArrow) {
+            let deltaX = 0;
+            let deltaY = 1;
+            return;
+        } else {
+            let deltaX = 0;
+            let deltaY = 0;
+            return;
+        }
+    }
+
+    //Пытается сделать шаг по команде пользователя
+    method char[,] TryMove(Map map) {
+
+        do getCommand();
+
+        if (~(map[y + deltaY, x + deltaX] = '#' ) {
+            let map[y + deltaY, x + deltaX] = 'P';
+            let map[y,x] = ' ';
+            
+            let x = x + deltaX;
+            let y = y + deltaY;
+            }
+		
+        return map;
+
 	}
 
     // Освобождение памяти
     method void dispose() {
-		do ?.dispose();
+    
+		do Memory.deAlloc(this);
+
 		return;
 	}
+}
