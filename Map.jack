@@ -1,28 +1,69 @@
 class Map {
-
     field int width, height;
+    field Array map;
+    /** Создаём и выводим на экран новый лабиринт заданной ширины и высоты. */
+    // constructor Map new(int Mwidth, int Mheight) {
+    //     let width = Mwidth;
+    //     let height = Mheight;
+    //     let map = Array.new(width * height);
+    //     do readMap();
+    //     do draw();
+    //     return this;
+    // }
 
-    method int width() {
-        return width;
-    }
-    
-    method int height() {
-        return height;
+    constructor Map new() {
+        let width = 58;
+        let height = 18;
+        let map = Array.new(width * height);
+        do readMap();
+        do draw();
+        return this;
     }
 
-    // Получаем char array из строки вроде  
-    function void readMap() {
+    /** Создаём лабиринт - массив символов. */
+    method void readMap() {
+        var int i;
+        let i = 0;
+        while(i < width * height - 1) {
+            let map[i] = "0";
+            let i = i + 1;
+        }
+        let i = 0;
+        while(i < width-1) {
+            let map[i] = "1";
+            let i = i + 1;
+        }
         return;
     }
 
-    // Выводим лабиринт на экран
-    method void drawMap() {
+    method void draw() {
+        var int x, y;
+        let y = 0;
+        while( y < height ) {
+            do Output.moveCursor(4+y, 3);
+            let x = 0;
+            while( x < width ) {
+                do Output.printChar( map[y * width + x] );
+                let x = x + 1;
+            }
+            do Output.println();
+            let y = y + 1;
+        }
         return;
     }
 
-    // Освобождение памяти
+    /** Очищение памяти. */
     method void dispose() {
-		do ?.dispose();
+        do map.dispose();
+		do Memory.deAlloc(this);
+        return;
+	}
+
+    method void showCredits() {
+		do Output.moveCursor(1,28);
+		do Output.printString("Labirint");
+		do Output.moveCursor(2,28);
+		do Output.printString("--------");
 		return;
 	}
 }
