@@ -14,11 +14,10 @@ class Player {
     }
 
     //Получаем координаты игрока
-    method int getCoordinate(Map map) {
-        var int width, i;
+    method int getCoordinate(Map map) { 
+        var int width;
         let width = map.getWidth();
-        let i = y * width + x;
-        return i;
+        return y * width + x;
     }
 
     //Получает команду и высчитывает изменение координат, исходя из неё
@@ -82,13 +81,11 @@ class Player {
 		
         return;
 
-	}
+    }
 
     // Освобождение памяти
     method void dispose() {
-    
-		do Memory.deAlloc(this);
-
-		return;
-	}
+	do Memory.deAlloc(this);
+	return;
+    }
 }
