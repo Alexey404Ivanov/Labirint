@@ -1,0 +1,94 @@
+class Player {
+    
+    field int x, y, deltaX, deltaY;
+
+
+    constructor Player new() {
+
+        let x = 1;
+        let y = 1;
+        let deltaX = 0;
+        let deltaY = 0;
+
+        return this;
+    }
+
+    //Получаем координаты игрока
+    method int getCoordinate(Map map) {
+        var int width, i;
+        let width = map.getWidth();
+        let i = y * width + x;
+        return i;
+    }
+
+    //Получает команду и высчитывает изменение координат, исходя из неё
+    method void getCommand(int key) {
+
+        var int leftArrow, upArrow, rightArrow, downArrow;
+
+        let leftArrow = 130;
+        let upArrow = 131;
+        let rightArrow = 132;
+        let downArrow = 133;
+
+        if (key = leftArrow) {
+            let deltaX = -1;
+            let deltaY = 0;
+            return;
+        }
+
+        if (key = upArrow) {
+            let deltaX = 0;
+            let deltaY = -1;
+            return;
+        }
+
+        if (key = rightArrow) {
+            let deltaX = 1;
+            let deltaY = 0;
+            return;
+        }
+
+        if (key = downArrow) {
+            let deltaX = 0;
+            let deltaY = 1;
+            return;
+        } else {
+            let deltaX = 0;
+            let deltaY = 0;
+            return;
+        }
+    }
+
+    //Пытается сделать шаг по команде пользователя
+    method void TryMove(Map map, int key) {
+
+        var Array mapField;
+        var int width;
+
+        do getCommand(key);
+        let mapField = map.getMap();
+        let width = map.getWidth();
+        if (~(mapField[(y + deltaY) * width + (x + deltaX)] = 1)) {
+        
+            do map.setMap((y + deltaY) * width + (x + deltaX), 2);
+            do map.setMap(y * width + x, 0);
+            
+            let x = x + deltaX;
+            let y = y + deltaY;
+
+            do map.drawMap();
+        }
+		
+        return;
+
+	}
+
+    // Освобождение памяти
+    method void dispose() {
+    
+		do Memory.deAlloc(this);
+
+		return;
+	}
+}
