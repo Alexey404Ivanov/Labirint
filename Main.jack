@@ -1,47 +1,27 @@
 class Main {
-    // Переменные
-    var Array map;
-    var Player player;
+    function void main() {
+        var Map map;
+        var Player player;
+        var int key;
 
-    // Инициализация переменных
-    let map = Map.readMap();
-    let player = Player.new();
+        let player = Player.new();
+        let map = Map.new();
+        
+        do map.showCredits();
 
-    // Инициализация классов (?)
-    Player.init();
-    Map.init();
-
-    // Рисование лабиринта и игрока
-    do Map.draw();
-    do Player.draw();
-
-	function void main() {
-    		while (~isGameEnd) {
-
-
-                ...
-
-
+        while(~(player.getCoordinate(map) = 12)) { 
+            let key = Keyboard.keyPressed();
+            if (~(key = 0)) {
+                do player.TryMove(map, key);
+            }
         }
+        do Screen.clearScreen();
+        do Output.moveCursor(11, 22);
+        do Output.printString("CONGRATULATIONS!!!");
+        do Sys.wait(3000);
 
-        // Экран окончания игры (?)
-        ...
-
-        // Чистка памяти после завершения игры
-        map.dispose();
-        player.dispose();
-
-
-        return;
-    }
-
-    // Проверка игры на завершение
-    function bool isGameEnd() {
-        return ..;
-    }
-
-    // Завершает игру. Выводит сообщение и чистит экран.
-    function void endGame() {
+        do map.dispose();
+        do player.dispose();
         return;
     }
 }

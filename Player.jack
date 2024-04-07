@@ -1,40 +1,25 @@
 class Player {
     
-    field int x, y, deltaX, deltaY; 
+    field int x, y, deltaX, deltaY;
 
 
     constructor Player new() {
 
-        let x = 0;
-        let y = 0;
+        let x = 1;
+        let y = 1;
         let deltaX = 0;
         let deltaY = 0;
 
         return this;
     }
 
-    //Получаем позицию игрока
-    method void getPosition(Map map) {
-
-        var int i, j;
-
-        let i = 0;
-        let j = 0; 
-
-        while (i < map.height()) {
-            while (j < map.width()) {
-                if (map[i ,j] = 'P') {
-                    let x = j;
-                    let y = i;
-                    return;
-                }
-                let j = j + 1;
-            let i = i + 1;
-
-		return;
-	}
-
-        
+    //Получаем координаты игрока
+    method int getCoordinate(Map map) {
+        var int width, i;
+        let width = map.getWidth();
+        let i = y * width + x;
+        return i;
+    }
 
     //Получает команду и высчитывает изменение координат, исходя из неё
     method void getCommand(int key) {
@@ -76,19 +61,26 @@ class Player {
     }
 
     //Пытается сделать шаг по команде пользователя
-    method char[,] TryMove(Map map) {
+    method void TryMove(Map map, int key) {
 
-        do getCommand();
+        var Array mapField;
+        var int width;
 
-        if (~(map[y + deltaY, x + deltaX] = '#' ) {
-            let map[y + deltaY, x + deltaX] = 'P';
-            let map[y,x] = ' ';
+        do getCommand(key);
+        let mapField = map.getMap();
+        let width = map.getWidth();
+        if (~(mapField[(y + deltaY) * width + (x + deltaX)] = 1)) {
+        
+            do map.setMap((y + deltaY) * width + (x + deltaX), 2);
+            do map.setMap(y * width + x, 0);
             
             let x = x + deltaX;
             let y = y + deltaY;
-            }
+
+            do map.drawMap();
+        }
 		
-        return map;
+        return;
 
 	}
 
