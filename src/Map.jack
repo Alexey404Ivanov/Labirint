@@ -1,7 +1,6 @@
 class Map {
     field int width, height;
     field Array map;
-    field int memAddress;
     field int stepCounter;
    
     constructor Map new() {
@@ -40,16 +39,16 @@ class Map {
             while (j < width) {
                 let temp = map[i * width + j];
                 if (temp = 0) {
-                    do clearCell(i * 512 + j + 1024);
+                    do Draw.clearCell(i * 512 + j + 1024);
                 }
                 if (temp = 1) {
-                    do drawWall(i * 512 + j + 1024);
+                    do Draw.drawWall(i * 512 + j + 1024);
                 }
                 if (temp = 2) {
-                    do drawPlayer(i * 512 + j + 1024);
+                    do Draw.drawPlayer(i * 512 + j + 1024);
                 }
                 if (temp = 3) {
-                    do drawFinish(i * 512 + j + 1024);
+                    do Draw.drawFinish(i * 512 + j + 1024);
                 }
                 let j = j + 1;
             }
@@ -105,90 +104,6 @@ class Map {
         let map[420] = 1; let map[421] = 1; let map[422] = 1; let map[423] = 1; let map[424] = 1; let map[425] = 1; let map[426] = 1; let map[427] = 1; let map[428] = 1; let map[429] = 1; 
         let map[430] = 1; let map[431] = 1; let map[432] = 1; let map[433] = 1; let map[434] = 1; let map[435] = 1; let map[436] = 1; let map[437] = 1; let map[438] = 1; let map[439] = 1; 
         let map[440] = 1; let map[441] = 1; let map[442] = 1; let map[443] = 1; let map[444] = 1; let map[445] = 1; let map[446] = 1; let map[447] = 1; 
-        return;
-    }
-
-    method void drawWall(int location) {
-		let memAddress = 16384 + location;
-		do Memory.poke(memAddress + 0, 4228);
-		do Memory.poke(memAddress + 32, 4228);
-		do Memory.poke(memAddress + 64, 4228);
-		do Memory.poke(memAddress + 96, -1);
-		do Memory.poke(memAddress + 128, 17442);
-		do Memory.poke(memAddress + 160, 17442);
-		do Memory.poke(memAddress + 192, 17442);
-		do Memory.poke(memAddress + 224, -1);
-		do Memory.poke(memAddress + 256, 4228);
-		do Memory.poke(memAddress + 288, 4228);
-		do Memory.poke(memAddress + 320, 4228);
-		do Memory.poke(memAddress + 352, -1);
-		do Memory.poke(memAddress + 384, 17442);
-		do Memory.poke(memAddress + 416, 17442);
-		do Memory.poke(memAddress + 448, 17442);
-		do Memory.poke(memAddress + 480, -1);
-		return;
-	}
-
-    method void drawPlayer(int location) {
-		let memAddress = 16384 + location;
-		do Memory.poke(memAddress + 0, 0);
-		do Memory.poke(memAddress + 32, 0);
-		do Memory.poke(memAddress + 64, 0);
-		do Memory.poke(memAddress + 96, 6144);
-		do Memory.poke(memAddress + 128, 9600);
-		do Memory.poke(memAddress + 160, 9792);
-		do Memory.poke(memAddress + 192, 7746);
-		do Memory.poke(memAddress + 224, 9201);
-		do Memory.poke(memAddress + 256, -13943);
-		do Memory.poke(memAddress + 288, -16378);
-		do Memory.poke(memAddress + 320, 15364);
-		do Memory.poke(memAddress + 352, 1016);
-		do Memory.poke(memAddress + 384, 680);
-		do Memory.poke(memAddress + 416, 0);
-		do Memory.poke(memAddress + 448, 0);
-		do Memory.poke(memAddress + 480, 0);
-		return;
-	}
-
-    method void drawFinish(int location) {
-		let memAddress = 16384 + location;
-		do Memory.poke(memAddress + 0, 0);
-		do Memory.poke(memAddress + 32, 0);
-		do Memory.poke(memAddress + 64, 0);
-		do Memory.poke(memAddress + 96, 3584);
-		do Memory.poke(memAddress + 128, 4480);
-		do Memory.poke(memAddress + 160, 9312);
-		do Memory.poke(memAddress + 192, 16408);
-		do Memory.poke(memAddress + 224, 31214);
-		do Memory.poke(memAddress + 256, 17986);
-		do Memory.poke(memAddress + 288, 24580);
-		do Memory.poke(memAddress + 320, 18530);
-		do Memory.poke(memAddress + 352, 30622);
-		do Memory.poke(memAddress + 384, 0);
-		do Memory.poke(memAddress + 416, 0);
-		do Memory.poke(memAddress + 448, 0);
-		do Memory.poke(memAddress + 480, 0);
-		return;
-	}
-
-    method void clearCell (int location) {
-        let memAddress = 16384 + location;
-        do Memory.poke(memAddress + 0, 0);
-        do Memory.poke(memAddress + 32, 0);
-        do Memory.poke(memAddress + 64, 0);
-        do Memory.poke(memAddress + 96, 0);
-        do Memory.poke(memAddress + 128, 0);
-        do Memory.poke(memAddress + 160, 0);
-        do Memory.poke(memAddress + 192, 0);
-        do Memory.poke(memAddress + 224, 0);
-        do Memory.poke(memAddress + 256, 0);
-        do Memory.poke(memAddress + 288, 0);
-        do Memory.poke(memAddress + 320, 0);
-        do Memory.poke(memAddress + 352, 0);
-        do Memory.poke(memAddress + 384, 0);
-        do Memory.poke(memAddress + 416, 0);
-        do Memory.poke(memAddress + 448, 0);
-        do Memory.poke(memAddress + 480, 0);
         return;
     }
 

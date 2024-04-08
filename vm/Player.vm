@@ -12,7 +12,7 @@ push constant 0
 pop this 3
 push pointer 0
 return
-function Player.getCoordinate 2
+function Player.getCoordinate 1
 push argument 0
 pop pointer 0
 push argument 1
@@ -23,8 +23,6 @@ push local 0
 call Math.multiply 2
 push this 0
 add
-pop local 1
-push local 1
 return
 function Player.getCommand 4
 push argument 0

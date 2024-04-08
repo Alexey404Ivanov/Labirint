@@ -15,10 +15,9 @@ class Player {
 
     //Получаем координаты игрока
     method int getCoordinate(Map map) {
-        var int width, i;
+        var int width;
         let width = map.getWidth();
-        let i = y * width + x;
-        return i;
+        return y * width + x;
     }
 
     //Получает команду и высчитывает изменение координат, исходя из неё
